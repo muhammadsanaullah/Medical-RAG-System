@@ -1,5 +1,5 @@
-# Gemini-Powered Medical RAG System to Answer Clinical Questions using PubMed References
-This is a sample RAG system that can answer medical questions by retrieving relevant research papers from PubMed and generating an answer using an LLM using only those retrieved papers. This tool helps doctors quickly find answers to their queries backed up by scientific literature relevant to the topic of the query.
+# Medical RAG System to Answer Clinical Questions with PubMed References
+This is a sample RAG system that can answer medical questions by retrieving relevant research papers from PubMed and generating an answer using a Gemini-powered LLM using only those retrieved papers. This tool helps doctors quickly find answers to their queries backed up by scientific literature relevant to the topic of the query.
 
 ## Setup (Windows)
 1. Clone the repository using:
