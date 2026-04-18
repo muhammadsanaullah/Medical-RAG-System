@@ -1,6 +1,11 @@
 # Medical RAG System: Clinical Q/A's using PubMed
 This is a sample RAG system that can answer medical questions by retrieving relevant research papers from PubMed and generating an answer using an LLM using only those retrieved papers. This tool helps doctors quickly find answers to their queries backed up by scientific literature relevant to the topic of the query.
 
+## Setup
+1. Clone the repository using: 'git clone https://github.com/muhammadsanaullah/Medical-RAG-System.git'.
+2. Create a virtual environment to isolate dependencies: {content: cd Medical-RAG-System; python -m venv medrag_env}
+3. 
+
 ### Methodology
 The system is built in 3 stages: data collection, retrieval and answer generation. 
 1. For data collection, PubMed's E-utilities API is used to get the 5 most recent articles for each medical term provided. From each article, important information like title, abstract, author(s), journal, year and DOI are extracted and stored in a JSON file.
