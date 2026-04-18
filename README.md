@@ -27,8 +27,7 @@ This is a sample RAG system that can answer medical questions by retrieving rele
    ```
    This will run the main system script that fetches medical articles from PubMed based on the queries you've given it. It will build a retrieval system, evaluate
    performacne of each, and generate answers using the Gemini LLM.
-   You can edit parameter values and add/edit/remove queries in the `main.py` file for usage. *Future implementations will include a data parses so this step is
-   not required and queries and parameters can be directly given from the terminal command line.*
+   You can edit parameter values and add/edit/remove queries in the `main.py` file for usage. *Future improvements to this system will include a data parser so       this step is not required and queries and parameters can be directly given from the terminal command line.*
 
 ## Methodology
 The system is built in 3 stages: data collection, retrieval and answer generation. 
