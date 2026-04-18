@@ -1,8 +1,15 @@
 ### Medical RAG System: Clinical Q/A's using PubMed
 This is a sample RAG system that can answer medical questions by retrieving relevant research papers from PubMed and generating an answer using an LLM using only those retrieved papers. This tool helps doctors quickly find answers to their queries backed up by scientific literature relevant to the topic of the query.
 
+# Methodology
 The system is built in 3 stages: data collection, retrieval and answer generation. 
 1. For data collection, PubMed's E-utilities API is used to get the 5 most recent articles for each medical term provided. From each article, important information like title, abstract, author(s), journal, year and DOI are extracted and stored in a JSON file.
 2. For retrieval, three different approaches are implemented for the query: BM25, Semantic and Hybrid. BM25 is a keyword-based approach that ranks the documents based on how well their words match the words in the query. Semantic search, using the intfloat/multilingual-e5-small sentence transformer model, understands the meaning of the query and documents rather than just matching words. This model was chosen as it supports both English and Turkish queries and gives a good balance between performance and size.
 3. Lastly, the hybrid approach makes use of both the BM25 and Semantic approaches, using a reciprocal rank fusion (RRF) which combines rankings from the other two searches to give its own, based on the combined strengths of the other two.
+
+# BM25 Analysis
+BM25 has two key parameters: k1 and b, which control how it ranks documents. k1 determines how much weightage is given to repeated keywords in a document and b controls how document length affects ranking. If k1 is high, documents that repeat important terms more often will rank higher, and if it is low, repetition matters less. If b = 0, document length is completely ignored, but if b = 1, longer documents are normalized so they don't unfairly dominate results. While different values for k1 and b were experimented, it was found that k1 = 1.5 and b = 0.75 provide a good balance to allow the system to consider both keyword weightage and document length without having a bias for either.
+
+# RRF Analysis
+RRF combines rankings using score = 1/(k + rank), where k controls how much importance is given to the top ranked results. When k is small like 0, the top few results dominate the final ranking, and when it is large like 1000, all documents contribute almost equally, which reduces the impact of ranking differences. A moderate value like k = 60 gives a good balance.
 
