@@ -16,6 +16,12 @@ RRF combines rankings using score = 1/(k + rank), where k controls how much impo
 ### Evaluation and RAG Generation
 Two metrics evaluated the retrieval methods: precision@5 and mean reciprocal rank (MRR). P@5 measures how many of the top 5 retrieved documents are actually relevant while MRR measures how early the first relevant result appears. From the experiments, the hybrid method performed better than BM25 or semantic methods alone. Once the relevant documents are retrieved, the system uses the given query to generate an answer based on the paper context alone using the gemini-2.5-flash LLM, and returns cited references accordingly. This ensures we don't have any inferred or imagined responses, which may even be relevant somehow, but have factually grounded responses from the relevant literature. 
 
+~
+
+*This was a time-constrained implementation of a Medical RAG System, it can be further worked upon.*
+*Some challenges included handling API rate limits and assigning the appropriate LLM for execution for Q/A. These were handled by adding time delays between each query and simplifying the simplest available LLM for this system. Further improvements can include adding a translation step from Turkish to English before retrieval so we avoid any systematic errors cascaded from step to step. Extended experimentation between different LLMs and implementation to other clinical databases can also be significant improvements to this system.*
+*Given a hypothetical scenario where there's a need to use a 70B open-source LLM but without access to a powerful GPU like L40S, alternative GPUs may be looed at like A100 or H100. To optimize memory usage, smaller versions of the model may be used with lesser no. of bits for processing, as long as it doesn't compromise on accuracy and performance.*
+
 
 
 
